@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pluto Capital | Investment Broker</title>
+    <meta
+      name="description"
+      content="Pluto Capital is a premium investment broker platform with admin-controlled KYC, portfolio management, and secure withdrawals."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero-shell">
+      <nav class="nav container">
+        <a class="brand" href="#">Pluto Capital</a>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#plans">Plans</a>
+          <a href="#admin">Admin</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <section class="hero container">
+        <div class="hero-copy">
+          <p class="eyebrow">Global investment broker • Secure by design</p>
+          <h1>Grow wealth with a broker that combines speed, compliance, and clarity.</h1>
+          <p class="lead">
+            Pluto Capital gives investors access to diversified portfolios, live market intelligence,
+            and seamless cash movement with full admin oversight for KYC and withdrawals.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#plans">Open an account</a>
+            <a class="btn btn-secondary" href="#admin">View admin console</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <strong>$2.4B</strong>
+              <span>Assets under management</span>
+            </div>
+            <div>
+              <strong>98.7%</strong>
+              <span>Operational uptime</span>
+            </div>
+            <div>
+              <strong>24/7</strong>
+              <span>Client support</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Live portfolio</p>
+              <h3>Client performance</h3>
+            </div>
+            <span class="chip positive">+12.4%</span>
+          </div>
+          <div class="balance">$128,450</div>
+          <div class="meter-list">
+            <div class="meter-item">
+              <span>Mining assets</span>
+              <div class="bar"><i style="width: 82%"></i></div>
+            </div>
+            <div class="meter-item">
+              <span>Forex</span>
+              <div class="bar"><i style="width: 67%"></i></div>
+            </div>
+            <div class="meter-item">
+              <span>Commodities</span>
+              <div class="bar"><i style="width: 91%"></i></div>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div>
+              <p>Risk level</p>
+              <strong>Balanced</strong>
+            </div>
+            <div>
+              <p>Next payout</p>
+              <strong>Today</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section id="services" class="section container">
+        <div class="section-heading">
+          <p class="eyebrow">Why Pluto Capital</p>
+          <h2>Everything an institutional-grade broker should offer.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="card feature-card">
+            <h3>Smart portfolio design</h3>
+            <p>Allocate capital across mining, energy, and forex markets with tailored strategies.</p>
+          </article>
+          <article class="card feature-card">
+            <h3>Compliance-first onboarding</h3>
+            <p>Admin-managed KYC, identity verification, and watchlist monitoring in one workflow.</p>
+          </article>
+          <article class="card feature-card">
+            <h3>Fast and secure withdrawals</h3>
+            <p>Expedited processing, transparent limits, and real-time status updates for every request.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="plans" class="section container">
+        <div class="section-heading">
+          <p class="eyebrow">Investment plans</p>
+          <h2>Choose the growth path that fits your goals.</h2>
+        </div>
+        <div class="plan-grid">
+          <article class="card plan-card">
+            <h3>Starter</h3>
+            <p class="price">$2,500</p>
+            <ul>
+              <li>Daily insights</li>
+              <li>Basic risk management</li>
+              <li>Weekly payout</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contact">Get started</a>
+          </article>
+          <article class="card plan-card featured">
+            <h3>Growth</h3>
+            <p class="price">$25,000</p>
+            <ul>
+              <li>Priority onboarding</li>
+              <li>Dedicated account manager</li>
+              <li>Bi-weekly profit distributions</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Join growth</a>
+          </article>
+          <article class="card plan-card">
+            <h3>Executive</h3>
+            <p class="price">$100,000+</p>
+            <ul>
+              <li>Tailored strategies</li>
+              <li>VIP support</li>
+              <li>Custom withdrawal privileges</li>
+            </ul>
+            <a class="btn btn-secondary" href="#contact">Request consult</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="admin" class="section admin-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Admin control center</p>
+            <h2>Monitor compliance, approvals, and withdrawals from one dashboard.</h2>
+          </div>
+
+          <div id="auth-panel" class="card auth-card">
+            <h3>Administrator access</h3>
+            <p class="request-meta">Sign in to review KYC documents and release withdrawals.</p>
+            <form id="login-form" class="login-form">
+              <input id="username" type="text" placeholder="Username" required />
+              <input id="password" type="password" placeholder="Password" required />
+              <button class="btn btn-primary" type="submit">Sign in</button>
+            </form>
+            <p id="auth-message" class="request-meta"></p>
+          </div>
+
+          <div id="admin-dashboard" class="hidden">
+            <div class="summary-grid">
+              <article class="card stat-card">
+                <p>Pending KYC</p>
+                <strong id="pending-kyc-count">0</strong>
+              </article>
+              <article class="card stat-card">
+                <p>Pending withdrawals</p>
+                <strong id="pending-withdrawal-count">0</strong>
+              </article>
+              <article class="card stat-card">
+                <p>Verified clients</p>
+                <strong id="verified-count">0</strong>
+              </article>
+              <article class="card stat-card">
+                <p>Approved today</p>
+                <strong id="approved-count">0</strong>
+              </article>
+            </div>
+
+            <div class="admin-grid">
+              <article class="card">
+                <div class="table-title-wrap">
+                  <h3>KYC review queue</h3>
+                  <span class="chip">Compliance</span>
+                </div>
+                <div id="kyc-list" class="request-list"></div>
+              </article>
+
+              <article class="card">
+                <div class="table-title-wrap">
+                  <h3>Withdrawal requests</h3>
+                  <span class="chip">Finance</span>
+                </div>
+                <div id="withdrawal-list" class="request-list"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="footer">
+      <div class="container footer-wrap">
+        <div>
+          <h3>Pluto Capital</h3>
+          <p>Institutional-grade investment access for clients worldwide.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:support@plutocapital.com">Book a consultation</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

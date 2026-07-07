@@ -1,0 +1,9 @@
+{
+  "name": "pluto-world-mining-exchange",
+  "version": "1.0.0",
+  "description": "Broker website with admin login and request management",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}
