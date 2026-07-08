@@ -12,6 +12,7 @@
   --success: #22c55e;
   --border: rgba(255, 255, 255, 0.14);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  --bitcoin: #F7931A;
 }
 
 * {
@@ -72,6 +73,34 @@ a {
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: transform 200ms ease, filter 200ms ease;
+}
+
+.brand:hover {
+  transform: scale(1.05);
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(247, 147, 26, 0.25));
+  animation: bitcoinPulse 3s ease-in-out infinite;
+}
+
+@keyframes bitcoinPulse {
+  0%, 100% {
+    filter: drop-shadow(0 4px 12px rgba(247, 147, 26, 0.25));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 6px 16px rgba(247, 147, 26, 0.4));
+    transform: scale(1.05);
+  }
 }
 
 .nav-links {
@@ -283,6 +312,42 @@ h1 {
 .plan-card,
 .stat-card {
   padding: 1.2rem;
+  position: relative;
+  transition: all 200ms ease;
+}
+
+.feature-card {
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(247, 147, 26, 0.5);
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.08), rgba(217, 119, 6, 0.05));
+}
+
+.feature-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.15), rgba(217, 119, 6, 0.1));
+  border: 2px solid rgba(247, 147, 26, 0.2);
+  transition: all 300ms ease;
+}
+
+.feature-card:hover .feature-icon {
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.25), rgba(217, 119, 6, 0.18));
+  border-color: rgba(247, 147, 26, 0.4);
+  transform: rotate(-5deg) scale(1.08);
+}
+
+.feature-icon svg {
+  width: 70%;
+  height: 70%;
 }
 
 .plan-grid {
@@ -302,7 +367,10 @@ h1 {
 .price {
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--primary);
+  background: linear-gradient(135deg, var(--bitcoin), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .admin-section {
@@ -417,6 +485,15 @@ h1 {
 @media (max-width: 640px) {
   .nav-links {
     display: none;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand {
+    font-size: 0.95rem;
   }
 
   .hero {
