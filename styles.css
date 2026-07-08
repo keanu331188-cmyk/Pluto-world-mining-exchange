@@ -1,13 +1,13 @@
 :root {
   color-scheme: dark;
-  --bg: #040b16;
+  --bg: #0a0e27;
   --bg-soft: #0e1b2e;
   --surface: rgba(255, 255, 255, 0.08);
   --surface-strong: rgba(255, 255, 255, 0.12);
   --text: #f7fbff;
   --muted: #9db0c8;
-  --primary: #74f0ff;
-  --primary-strong: #2cb7d9;
+  --primary: #00d4ff;
+  --primary-strong: #00a8cc;
   --accent: #8b5cf6;
   --success: #22c55e;
   --border: rgba(255, 255, 255, 0.14);
@@ -22,12 +22,148 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(116, 240, 255, 0.16), transparent 24%),
-    radial-gradient(circle at top right, rgba(139, 92, 246, 0.18), transparent 30%),
-    linear-gradient(135deg, var(--bg) 0%, #071826 48%, #02070d 100%);
+  background: linear-gradient(135deg, #0a0e27 0%, #061838 48%, #020a14 100%);
   color: var(--text);
   line-height: 1.7;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Space Background */
+.space-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+              radial-gradient(2px 2px at 60px 70px, rgba(255, 200, 100, 0.7), rgba(0, 0, 0, 0)),
+              radial-gradient(1px 1px at 50px 50px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+              radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+              radial-gradient(2px 2px at 90px 10px, rgba(255, 180, 200, 0.6), rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Planets */
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.planet-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 180, 100, 0.3), rgba(139, 69, 19, 0.1));
+  top: 10%;
+  right: 5%;
+  animation: float 20s ease-in-out infinite;
+  box-shadow: 0 0 80px rgba(255, 150, 0, 0.2), inset -50px -50px 120px rgba(0, 0, 0, 0.3);
+}
+
+.planet-2 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at 40% 40%, rgba(100, 150, 255, 0.25), rgba(30, 50, 150, 0.1));
+  top: 40%;
+  left: -50px;
+  animation: float 25s ease-in-out infinite reverse;
+  box-shadow: 0 0 60px rgba(100, 150, 255, 0.2);
+}
+
+.planet-3 {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 35% 35%, rgba(200, 100, 255, 0.2), rgba(100, 30, 150, 0.08));
+  bottom: 15%;
+  right: 10%;
+  animation: float 30s ease-in-out infinite;
+  box-shadow: 0 0 50px rgba(200, 100, 255, 0.15);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(30px); }
+}
+
+/* Asteroids */
+.asteroid {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, rgba(200, 200, 200, 0.4), rgba(100, 100, 100, 0.1));
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+.asteroid-1 {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  right: 15%;
+  animation: rotate 60s linear infinite;
+}
+
+.asteroid-2 {
+  width: 60px;
+  height: 60px;
+  bottom: 25%;
+  left: 10%;
+  animation: rotate 45s linear infinite reverse;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Meteor Shower */
+.meteor-shower {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.meteor-shower::before,
+.meteor-shower::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(255, 200, 100, 0.8), transparent);
+  animation: meteor 3s linear infinite;
+  top: 10%;
+  right: 20%;
+}
+
+.meteor-shower::after {
+  animation-delay: 1.5s;
+  right: 30%;
+}
+
+@keyframes meteor {
+  0% {
+    transform: translateY(-100px) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(400px) rotate(45deg);
+    opacity: 0;
+  }
 }
 
 img {
@@ -48,6 +184,7 @@ a {
   min-height: 100vh;
   padding-bottom: 3rem;
   position: relative;
+  z-index: 1;
   overflow: hidden;
 }
 
@@ -55,7 +192,7 @@ a {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(255,255,255,0.03), transparent 40%);
+  background: linear-gradient(120deg, rgba(0, 212, 255, 0.05), transparent 40%);
   pointer-events: none;
 }
 
@@ -77,10 +214,28 @@ a {
   align-items: center;
   gap: 0.8rem;
   transition: transform 200ms ease, filter 200ms ease;
+  position: relative;
 }
 
 .brand:hover {
   transform: scale(1.05);
+}
+
+.brand-text {
+  background: linear-gradient(135deg, var(--primary), var(--bitcoin));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-subtitle {
+  font-size: 0.6rem;
+  position: absolute;
+  bottom: -8px;
+  left: 50px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
 }
 
 .brand-icon {
@@ -88,19 +243,24 @@ a {
   height: 40px;
   min-width: 40px;
   display: block;
-  filter: drop-shadow(0 4px 12px rgba(247, 147, 26, 0.25));
-  animation: bitcoinPulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(0, 212, 255, 0.35));
+  animation: bitcoinPulse 3s ease-in-out infinite, spin 8s linear infinite;
 }
 
 @keyframes bitcoinPulse {
   0%, 100% {
-    filter: drop-shadow(0 4px 12px rgba(247, 147, 26, 0.25));
+    filter: drop-shadow(0 4px 12px rgba(0, 212, 255, 0.25));
     transform: scale(1);
   }
   50% {
-    filter: drop-shadow(0 6px 16px rgba(247, 147, 26, 0.4));
-    transform: scale(1.05);
+    filter: drop-shadow(0 6px 20px rgba(0, 212, 255, 0.45));
+    transform: scale(1.08);
   }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .nav-links {
@@ -125,7 +285,10 @@ a {
   letter-spacing: 0.25em;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--bitcoin));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 h1,
@@ -140,6 +303,10 @@ h1 {
   line-height: 1.08;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--primary), var(--text));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .lead {
@@ -164,7 +331,7 @@ h1 {
   font-weight: 600;
   transition: 180ms ease;
   border: 1px solid transparent;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .btn:hover {
@@ -172,13 +339,19 @@ h1 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  background: linear-gradient(135deg, var(--primary), #0088aa);
   color: #03131d;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
 }
 
 .btn-secondary {
   background: var(--surface);
   border-color: var(--border);
+  backdrop-filter: blur(10px);
 }
 
 .hero-stats {
@@ -190,15 +363,20 @@ h1 {
 .hero-stats div,
 .stat-card {
   padding: 0.95rem;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(0, 212, 255, 0.2);
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(0, 212, 255, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .hero-stats strong,
 .stat-card strong {
   display: block;
   font-size: 1.1rem;
+  background: linear-gradient(135deg, var(--primary), var(--text));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-stats span,
@@ -212,15 +390,30 @@ h1 {
 
 .hero-card,
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: rgba(10, 14, 39, 0.4);
+  border: 2px solid rgba(0, 212, 255, 0.2);
   backdrop-filter: blur(18px);
   border-radius: 1.5rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.15), var(--shadow);
 }
 
 .hero-card {
   padding: 1.35rem;
+}
+
+.planet-card {
+  animation: orbitGlow 4s ease-in-out infinite;
+}
+
+@keyframes orbitGlow {
+  0%, 100% {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.15), var(--shadow);
+    border-color: rgba(0, 212, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(0, 212, 255, 0.3), var(--shadow);
+    border-color: rgba(0, 212, 255, 0.4);
+  }
 }
 
 .card-header,
@@ -235,21 +428,27 @@ h1 {
   display: inline-flex;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(110, 231, 255, 0.12);
+  background: rgba(0, 212, 255, 0.15);
   color: var(--primary);
   font-size: 0.8rem;
   font-weight: 700;
+  border: 1px solid rgba(0, 212, 255, 0.3);
 }
 
 .chip.positive {
-  background: rgba(35, 193, 107, 0.16);
+  background: rgba(34, 197, 94, 0.16);
   color: var(--success);
+  border-color: rgba(34, 197, 94, 0.3);
 }
 
 .balance {
   font-size: 2rem;
   font-weight: 800;
   margin: 1rem 0;
+  background: linear-gradient(135deg, var(--primary), var(--text));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .meter-list {
@@ -266,7 +465,7 @@ h1 {
 
 .bar {
   height: 0.5rem;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 212, 255, 0.1);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -276,6 +475,7 @@ h1 {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--primary), var(--accent));
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
 .mini-grid {
@@ -291,10 +491,19 @@ h1 {
 
 .section {
   padding: 4.5rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .section-heading {
   margin-bottom: 1.6rem;
+}
+
+.section-heading h2 {
+  background: linear-gradient(135deg, var(--text), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .feature-grid,
@@ -322,8 +531,9 @@ h1 {
 
 .feature-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(247, 147, 26, 0.5);
-  background: linear-gradient(135deg, rgba(247, 147, 26, 0.08), rgba(217, 119, 6, 0.05));
+  border-color: rgba(0, 212, 255, 0.5);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.08));
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.25);
 }
 
 .feature-icon {
@@ -334,15 +544,16 @@ h1 {
   align-items: center;
   justify-content: center;
   border-radius: 1.5rem;
-  background: linear-gradient(135deg, rgba(247, 147, 26, 0.15), rgba(217, 119, 6, 0.1));
-  border: 2px solid rgba(247, 147, 26, 0.2);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(139, 92, 246, 0.1));
+  border: 2px solid rgba(0, 212, 255, 0.25);
   transition: all 300ms ease;
 }
 
 .feature-card:hover .feature-icon {
-  background: linear-gradient(135deg, rgba(247, 147, 26, 0.25), rgba(217, 119, 6, 0.18));
-  border-color: rgba(247, 147, 26, 0.4);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(139, 92, 246, 0.18));
+  border-color: rgba(0, 212, 255, 0.5);
   transform: rotate(-5deg) scale(1.08);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
 }
 
 .feature-icon svg {
@@ -354,14 +565,25 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.plan-icon {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
 .plan-card ul {
   padding-left: 1rem;
   color: var(--muted);
 }
 
 .plan-card.featured {
-  border-color: rgba(110, 231, 255, 0.5);
-  background: linear-gradient(145deg, rgba(110, 231, 255, 0.14), rgba(139, 92, 246, 0.12));
+  border-color: rgba(0, 212, 255, 0.5);
+  background: linear-gradient(145deg, rgba(0, 212, 255, 0.14), rgba(139, 92, 246, 0.12));
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.2);
+}
+
+.plan-card.featured:hover {
+  box-shadow: 0 0 70px rgba(0, 212, 255, 0.35);
 }
 
 .price {
@@ -374,14 +596,20 @@ h1 {
 }
 
 .admin-section {
-  background: rgba(255, 255, 255, 0.03);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: rgba(0, 212, 255, 0.03);
+  border-top: 2px solid rgba(0, 212, 255, 0.2);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
 }
 
 .summary-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-bottom: 1.2rem;
+}
+
+.stat-card:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  background: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
 }
 
 .admin-grid {
@@ -407,9 +635,18 @@ h1 {
   flex: 1 1 180px;
   padding: 0.85rem 1rem;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.05);
   color: var(--text);
+  backdrop-filter: blur(10px);
+  transition: all 200ms ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: rgba(0, 212, 255, 0.6);
+  background: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 }
 
 .hidden {
@@ -428,9 +665,9 @@ h1 {
   gap: 1rem;
   align-items: center;
   padding: 0.95rem 1rem;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(0, 212, 255, 0.2);
   border-radius: 0.95rem;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(0, 212, 255, 0.05);
 }
 
 .request-actions {
@@ -440,25 +677,37 @@ h1 {
 }
 
 .request-actions button {
-  border: none;
+  border: 1px solid rgba(0, 212, 255, 0.3);
   border-radius: 999px;
   padding: 0.45rem 0.75rem;
   cursor: pointer;
   font-weight: 600;
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--primary);
+  transition: all 200ms ease;
+}
+
+.request-actions button:hover {
+  background: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
 }
 
 .request-actions .approve {
-  background: rgba(35, 193, 107, 0.16);
+  background: rgba(34, 197, 94, 0.16);
   color: var(--success);
+  border-color: rgba(34, 197, 94, 0.3);
 }
 
 .request-actions .reject {
   background: rgba(248, 113, 113, 0.18);
   color: #fda4af;
+  border-color: rgba(248, 113, 113, 0.3);
 }
 
 .footer {
   padding: 2rem 0 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-wrap {
@@ -494,6 +743,10 @@ h1 {
 
   .brand {
     font-size: 0.95rem;
+  }
+
+  .brand-subtitle {
+    display: none;
   }
 
   .hero {
