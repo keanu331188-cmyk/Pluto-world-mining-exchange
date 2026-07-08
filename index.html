@@ -19,7 +19,29 @@
   <body>
     <header class="hero-shell">
       <nav class="nav container">
-        <a class="brand" href="#">Pluto Capital</a>
+        <a class="brand" href="#">
+          <svg class="brand-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bitcoinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#F7931A;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+              </linearGradient>
+              <filter id="bitcoinShadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2" />
+              </filter>
+            </defs>
+            <circle cx="100" cy="100" r="85" fill="url(#bitcoinGradient)" filter="url(#bitcoinShadow)" />
+            <circle cx="100" cy="70" r="85" fill="white" opacity="0.15" />
+            <g>
+              <rect x="75" y="50" width="8" height="100" rx="4" fill="white" />
+              <path d="M 83 50 Q 120 50 120 65 Q 120 75 100 80" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+              <line x1="83" y1="100" x2="120" y2="100" stroke="white" stroke-width="8" stroke-linecap="round" />
+              <path d="M 83 115 Q 125 115 125 135 Q 125 145 100 150" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+          </svg>
+          Pluto Capital
+        </a>
         <div class="nav-links">
           <a href="#services">Services</a>
           <a href="#plans">Plans</a>
@@ -101,14 +123,50 @@
         </div>
         <div class="feature-grid">
           <article class="card feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="featureGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#F7931A;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.2" />
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="85" fill="url(#featureGrad1)" />
+                <circle cx="100" cy="100" r="85" fill="none" stroke="#F7931A" stroke-width="2" opacity="0.3" />
+              </svg>
+            </div>
             <h3>Smart portfolio design</h3>
             <p>Allocate capital across mining, energy, and forex markets with tailored strategies.</p>
           </article>
           <article class="card feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="featureGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#F7931A;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.2" />
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="85" fill="url(#featureGrad2)" />
+                <circle cx="100" cy="100" r="85" fill="none" stroke="#F7931A" stroke-width="2" opacity="0.3" />
+              </svg>
+            </div>
             <h3>Compliance-first onboarding</h3>
             <p>Admin-managed KYC, identity verification, and watchlist monitoring in one workflow.</p>
           </article>
           <article class="card feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="featureGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#F7931A;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.2" />
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="85" fill="url(#featureGrad3)" />
+                <circle cx="100" cy="100" r="85" fill="none" stroke="#F7931A" stroke-width="2" opacity="0.3" />
+              </svg>
+            </div>
             <h3>Fast and secure withdrawals</h3>
             <p>Expedited processing, transparent limits, and real-time status updates for every request.</p>
           </article>

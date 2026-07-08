@@ -1,0 +1,59 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="bitcoinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F7931A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <filter id="bitcoinShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3" />
+    </filter>
+    <filter id="bitcoinGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+    </filter>
+  </defs>
+  
+  <!-- Background circle with subtle glow -->
+  <circle cx="100" cy="100" r="95" fill="url(#bitcoinGradient)" opacity="0.1" filter="url(#bitcoinGlow)" />
+  
+  <!-- Main Bitcoin symbol circle -->
+  <circle cx="100" cy="100" r="85" fill="url(#bitcoinGradient)" filter="url(#bitcoinShadow)" />
+  
+  <!-- Highlight for 3D effect -->
+  <circle cx="100" cy="70" r="85" fill="white" opacity="0.15" />
+  
+  <!-- Bitcoin "B" symbol with vertical lines -->
+  <g>
+    <!-- Left vertical line -->
+    <rect x="75" y="50" width="8" height="100" rx="4" fill="white" />
+    
+    <!-- Top curve -->
+    <path d="M 83 50 Q 120 50 120 65 Q 120 75 100 80" 
+          fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Middle horizontal line -->
+    <line x1="83" y1="100" x2="120" y2="100" stroke="white" stroke-width="8" stroke-linecap="round" />
+    
+    <!-- Bottom curve -->
+    <path d="M 83 115 Q 125 115 125 135 Q 125 145 100 150" 
+          fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  
+  <!-- Optional: Animated ring -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="url(#bitcoinGradient)" stroke-width="2" opacity="0.5" stroke-dasharray="565" stroke-dashoffset="565" style="animation: bitcoinRotate 8s linear infinite;" />
+  
+  <style>
+    @keyframes bitcoinRotate {
+      from {
+        stroke-dashoffset: 565;
+        transform: rotate(0deg);
+        transform-origin: 100px 100px;
+      }
+      to {
+        stroke-dashoffset: 0;
+        transform: rotate(360deg);
+        transform-origin: 100px 100px;
+      }
+    }
+  </style>
+</svg>
