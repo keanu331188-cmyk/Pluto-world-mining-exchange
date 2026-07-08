@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pluto Capital | Space Investment Broker</title>
+    <title>Pluto Capital | Space Investment Broker 🚀</title>
     <meta
       name="description"
       content="Pluto Capital - Journey to the edge of wealth. Premium investment broker platform in the Pluto world."
@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      🌙
+    </button>
+
     <!-- Space background with animated stars and planets -->
     <div class="space-bg">
       <div class="stars"></div>
@@ -26,6 +31,7 @@
       <div class="asteroid asteroid-1"></div>
       <div class="asteroid asteroid-2"></div>
       <div class="meteor-shower"></div>
+      <canvas id="particleCanvas" class="particle-canvas"></canvas>
     </div>
 
     <header class="hero-shell">
@@ -56,9 +62,11 @@
         </a>
         <div class="nav-links">
           <a href="#services">Services</a>
+          <a href="#crypto">Live Prices</a>
           <a href="#plans">Plans</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#blog">Blog</a>
           <a href="#admin">Admin</a>
-          <a href="#contact">Contact</a>
         </div>
       </nav>
 
@@ -127,6 +135,32 @@
     </header>
 
     <main>
+      <!-- Live Crypto Prices Section -->
+      <section id="crypto" class="section container">
+        <div class="section-heading">
+          <p class="eyebrow">💹 Live Market Pulse</p>
+          <h2>Real-time cosmic asset prices.</h2>
+        </div>
+        <div class="crypto-ticker" id="cryptoTicker">
+          <div class="crypto-item">
+            <span class="crypto-name">Bitcoin</span>
+            <span class="crypto-price" id="btc-price">Loading...</span>
+          </div>
+          <div class="crypto-item">
+            <span class="crypto-name">Ethereum</span>
+            <span class="crypto-price" id="eth-price">Loading...</span>
+          </div>
+          <div class="crypto-item">
+            <span class="crypto-name">Solana</span>
+            <span class="crypto-price" id="sol-price">Loading...</span>
+          </div>
+          <div class="crypto-item">
+            <span class="crypto-name">Ripple</span>
+            <span class="crypto-price" id="xrp-price">Loading...</span>
+          </div>
+        </div>
+      </section>
+
       <section id="services" class="section container">
         <div class="section-heading">
           <p class="eyebrow">🌟 Why Pluto Capital</p>
@@ -226,6 +260,85 @@
         </div>
       </section>
 
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="section container">
+        <div class="section-heading">
+          <p class="eyebrow">⭐ Cosmic Reviews</p>
+          <h2>What our space pioneers say.</h2>
+        </div>
+        <div class="testimonials-grid">
+          <article class="card testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"Pluto Capital transformed my wealth journey! Best platform I've used."</p>
+            <div class="testimonial-author">- Captain Sarah 🧑‍🚀</div>
+          </article>
+          <article class="card testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"The interface is stunning and the returns are astronomical!"</p>
+            <div class="testimonial-author">- Commander Jake 🚀</div>
+          </article>
+          <article class="card testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"Best investment platform in the galaxy. Worth every penny!"</p>
+            <div class="testimonial-author">- Astronaut Elena 🌌</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Blog Section -->
+      <section id="blog" class="section container">
+        <div class="section-heading">
+          <p class="eyebrow">📰 Cosmic News</p>
+          <h2>Investment insights from the edge of the universe.</h2>
+        </div>
+        <div class="blog-grid">
+          <article class="card blog-card">
+            <div class="blog-date">July 8, 2026</div>
+            <h3>How to Navigate Market Volatility</h3>
+            <p>Learn strategies to protect your cosmic portfolio during turbulent times...</p>
+            <a href="#" class="blog-link">Read More →</a>
+          </article>
+          <article class="card blog-card">
+            <div class="blog-date">July 6, 2026</div>
+            <h3>The Future of Interstellar Investing</h3>
+            <p>Discover emerging trends that will shape wealth creation across galaxies...</p>
+            <a href="#" class="blog-link">Read More →</a>
+          </article>
+          <article class="card blog-card">
+            <div class="blog-date">July 4, 2026</div>
+            <h3>5 Crypto Assets Set to Explode</h3>
+            <p>Our experts reveal the top performers expected to launch into orbit...</p>
+            <a href="#" class="blog-link">Read More →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Newsletter Signup -->
+      <section class="section container">
+        <div class="newsletter-card">
+          <h2>🛸 Join the Cosmic Community</h2>
+          <p>Get exclusive insights, market updates, and cosmic trading tips delivered to your inbox.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Your cosmic email" required />
+            <button type="submit" class="btn btn-primary">Subscribe 🚀</button>
+          </form>
+          <p class="newsletter-message" id="newsletterMessage"></p>
+        </div>
+      </section>
+
+      <!-- Referral Section -->
+      <section class="section container">
+        <div class="referral-card">
+          <h2>🎁 Earn by Referring Friends</h2>
+          <p>Share your referral code and earn 20% commission on every successful signup!</p>
+          <div class="referral-code">
+            <input type="text" id="referralCode" value="PLUTO2024" readonly />
+            <button class="btn btn-secondary" onclick="copyCode()">Copy Code 📋</button>
+          </div>
+          <p class="referral-message" id="referralMessage"></p>
+        </div>
+      </section>
+
       <section id="admin" class="section admin-section">
         <div class="container">
           <div class="section-heading">
@@ -286,13 +399,53 @@
       </section>
     </main>
 
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+      <div class="chat-header" onclick="toggleChat()">
+        💬 Chat with us
+      </div>
+      <div class="chat-body hidden" id="chatBody">
+        <div class="chat-messages" id="chatMessages"></div>
+        <form class="chat-input-form" id="chatForm" onsubmit="sendMessage(event)">
+          <input type="text" id="chatInput" placeholder="Type a message..." />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
     <footer id="contact" class="footer">
-      <div class="container footer-wrap">
-        <div>
-          <h3>🌌 Pluto Capital</h3>
-          <p>Investment excellence at the edge of the universe. 🚀</p>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>🌌 Pluto Capital</h3>
+            <p>Investment excellence at the edge of the universe. 🚀</p>
+            <div class="social-links">
+              <a href="#" title="Twitter">𝕏</a>
+              <a href="#" title="Discord">💜</a>
+              <a href="#" title="Telegram">✈️</a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#plans">Plans</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#">Privacy</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Contact</h4>
+            <ul>
+              <li>📧 support@plutocapital.com</li>
+              <li>📞 1-800-PLUTO-99</li>
+              <li>🌐 www.plutocapital.com</li>
+            </ul>
+          </div>
         </div>
-        <a class="btn btn-primary" href="mailto:support@plutocapital.com">Request Coordinates 📡</a>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Pluto Capital. Journey to Wealth. All rights reserved. 🚀</p>
+        </div>
       </div>
     </footer>
 

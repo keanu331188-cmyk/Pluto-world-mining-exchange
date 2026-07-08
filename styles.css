@@ -7,12 +7,22 @@
   --text: #f7fbff;
   --muted: #9db0c8;
   --primary: #00d4ff;
-  --primary-strong: #00a8cc;
+  --primary-strong: #0088aa;
   --accent: #8b5cf6;
   --success: #22c55e;
   --border: rgba(255, 255, 255, 0.14);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
   --bitcoin: #F7931A;
+}
+
+body.light-mode {
+  --bg: #f5f7fa;
+  --bg-soft: #e8ecf1;
+  --surface: rgba(0, 0, 0, 0.05);
+  --surface-strong: rgba(0, 0, 0, 0.08);
+  --text: #1a1a2e;
+  --muted: #666666;
+  --border: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -27,6 +37,35 @@ body {
   line-height: 1.7;
   position: relative;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 48%, #d9e1e8 100%);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.15);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  color: var(--primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 200ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(20deg);
+  background: rgba(0, 212, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
 }
 
 /* Space Background */
@@ -38,6 +77,12 @@ body {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+}
+
+.particle-canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .stars {
@@ -52,6 +97,10 @@ body {
   background-repeat: repeat;
   background-size: 200px 200px;
   animation: twinkle 5s infinite;
+}
+
+body.light-mode .stars {
+  opacity: 0.1;
 }
 
 @keyframes twinkle {
@@ -267,6 +316,12 @@ a {
   display: flex;
   gap: 1rem;
   color: var(--muted);
+  flex-wrap: wrap;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  transition: color 200ms ease;
 }
 
 .hero {
@@ -332,6 +387,7 @@ h1 {
   transition: 180ms ease;
   border: 1px solid transparent;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -395,6 +451,11 @@ h1 {
   backdrop-filter: blur(18px);
   border-radius: 1.5rem;
   box-shadow: 0 0 40px rgba(0, 212, 255, 0.15), var(--shadow);
+}
+
+body.light-mode .card {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 212, 255, 0.3);
 }
 
 .hero-card {
@@ -506,9 +567,53 @@ h1 {
   background-clip: text;
 }
 
+/* Crypto Ticker */
+.crypto-ticker {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.crypto-item {
+  padding: 1.5rem;
+  background: rgba(0, 212, 255, 0.08);
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  border-radius: 1rem;
+  text-align: center;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.crypto-item:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+}
+
+.crypto-name {
+  display: block;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.crypto-price {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--bitcoin));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .feature-grid,
 .plan-grid,
-.summary-grid {
+.summary-grid,
+.testimonials-grid,
+.blog-grid {
   display: grid;
   gap: 1rem;
 }
@@ -519,7 +624,9 @@ h1 {
 
 .feature-card,
 .plan-card,
-.stat-card {
+.stat-card,
+.testimonial-card,
+.blog-card {
   padding: 1.2rem;
   position: relative;
   transition: all 200ms ease;
@@ -595,6 +702,109 @@ h1 {
   background-clip: text;
 }
 
+/* Testimonials */
+.testimonials-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.testimonial-card {
+  padding: 1.5rem;
+}
+
+.testimonial-card .stars {
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin: 1rem 0;
+  color: var(--muted);
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Blog Section */
+.blog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.blog-card {
+  padding: 1.5rem;
+}
+
+.blog-date {
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.blog-card h3 {
+  margin: 0.5rem 0;
+}
+
+.blog-link {
+  color: var(--primary);
+  font-weight: 600;
+  transition: all 200ms ease;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.blog-link:hover {
+  gap: 0.5rem;
+  text-decoration: underline;
+}
+
+/* Newsletter */
+.newsletter-card,
+.referral-card {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(139, 92, 246, 0.1));
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.newsletter-form,
+.referral-code {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input,
+.referral-code input {
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.05);
+  color: var(--text);
+  min-width: 250px;
+  backdrop-filter: blur(10px);
+}
+
+.newsletter-form input:focus,
+.referral-code input:focus {
+  outline: none;
+  border-color: rgba(0, 212, 255, 0.6);
+  background: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+.newsletter-message,
+.referral-message {
+  margin-top: 0.5rem;
+  color: var(--success);
+}
+
 .admin-section {
   background: rgba(0, 212, 255, 0.03);
   border-top: 2px solid rgba(0, 212, 255, 0.2);
@@ -650,7 +860,7 @@ h1 {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .request-list {
@@ -704,17 +914,180 @@ h1 {
   border-color: rgba(248, 113, 113, 0.3);
 }
 
-.footer {
-  padding: 2rem 0 3rem;
-  position: relative;
-  z-index: 1;
+/* Live Chat Widget */
+.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  background: rgba(10, 14, 39, 0.95);
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 1rem;
+  z-index: 99;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+  overflow: hidden;
 }
 
-.footer-wrap {
+.chat-header {
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(139, 92, 246, 0.1));
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  cursor: pointer;
+  font-weight: 600;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
+  transition: all 200ms ease;
+}
+
+.chat-header:hover {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(139, 92, 246, 0.15));
+}
+
+.chat-body {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: all 200ms ease;
+}
+
+.chat-body.hidden {
+  height: 0;
+  overflow: hidden;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chat-message {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  max-width: 90%;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.chat-input-form {
+  display: flex;
+  padding: 0.75rem;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.chat-input-form input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  background: rgba(0, 212, 255, 0.05);
+  color: var(--text);
+}
+
+.chat-input-form button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 200ms ease;
+}
+
+.chat-input-form button:hover {
+  background: rgba(0, 212, 255, 0.3);
+}
+
+/* Footer */
+.footer {
+  padding: 3rem 0 1rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 2px solid rgba(0, 212, 255, 0.2);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-column h4 {
+  margin-top: 0;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 0.5rem 0;
+}
+
+.footer-column ul li a:hover {
+  color: var(--primary);
+}
+
+.social-links {
+  display: flex;
   gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  transition: all 200ms ease;
+  font-size: 1.2rem;
+}
+
+.social-links a:hover {
+  background: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  color: var(--muted);
+}
+
+@media (max-width: 1024px) {
+  .crypto-ticker {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 900px) {
@@ -722,20 +1095,22 @@ h1 {
   .feature-grid,
   .plan-grid,
   .summary-grid,
-  .admin-grid {
+  .admin-grid,
+  .testimonials-grid,
+  .blog-grid {
     grid-template-columns: 1fr;
   }
 
   .hero-stats {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 640px) {
   .nav-links {
     display: none;
   }
+}
 
+@media (max-width: 640px) {
   .brand-icon {
     width: 32px;
     height: 32px;
@@ -747,6 +1122,20 @@ h1 {
 
   .brand-subtitle {
     display: none;
+  }
+
+  .crypto-ticker {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-widget {
+    width: calc(100% - 20px);
+    right: 10px;
+    left: 10px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
   }
 
   .hero {
